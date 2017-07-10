@@ -4,8 +4,6 @@ import java.util.Random;
 
 public class Main {
 	static Scanner scanner = new Scanner(System.in);
-	
-	//TODO Totally random chooser
 
 	/**
 	 * getRandMusic chooses what type of music you should listen to for you
@@ -123,7 +121,8 @@ public class Main {
 						"The Best of Leonard Cohen", "Wounded Rhymes - Lykke Li", "Era Extrana - Neon Indian", "Vega Intl. Night School - Neon Indian",
 						"In the Aeroplane Over the Sea - Neutral Milk Hotel", "The Dark Side of the Moon - Pink Floyd", "The Best of Simon & Garfunkel", 
 						"The Graduate - Simon & Garfunkel", "Sleep in the Water - Snakadaktal", "Apocalypse - Thundercat", "Fifty Shades Darker", 
-						"Paper Towns"
+						"Paper Towns", "An Awesome Wave - alt-J", "Antidote - Foals", "Beauty Behind the Madness", "Gorilla Manor - Local Natives", 
+						"Belle and Sebastian", "Helplessness Blues - Fleet Foxes", "Ma Fleur - The Cinematic Orchestra"
 				};
 				displayAlbum(news);
 			}
@@ -132,7 +131,8 @@ public class Main {
 			else if (genre == 1){
 				String[] alts = {"The Names - Baio", "How Big, How Blue, How Beautiful", "Direct Hits - The Killers", "Riot on an Empty Street - Kings of Convenience", 
 						"Wounded Rhymes - Lykke Li", "Era Extrana - Neon Indian", "Vega Intl. Night School - Neon Indian",
-						"In the Aeroplane Over the Sea - Neutral Milk Hotel", "Sleep in the Water - Snakadaktal", "Apocalypse - Thundercat"
+						"In the Aeroplane Over the Sea - Neutral Milk Hotel", "Sleep in the Water - Snakadaktal", "Apocalypse - Thundercat",
+						"An Awesome Wave - alt-J", "Antidote - Foals", "Gorilla Manor - Local Natives", "Belle and Sebastian", "Ma Fleur - The Cinematic Orchestra"
 				};
 				displayAlbum(alts);
 			}
@@ -149,13 +149,15 @@ public class Main {
 			
 			// hip hop
 			else if (genre == 4){
-				String[] hiphops = {"Because the Internet - Childish Gambino", "If You're Reading This It's Too Late"};
+				String[] hiphops = {"Because the Internet - Childish Gambino", "If You're Reading This It's Too Late", "Beauty Behind the Madness"};
 				displayAlbum(hiphops);
 			}
 			
 			// indie
 			else if (genre == 5){
-				String[] indies = {"How Big, How Blue, How Beautiful", "Riot on an Empty Street - Kings of Convenience", "In the Aeroplane Over the Sea - Neutral Milk Hotel"};
+				String[] indies = {"How Big, How Blue, How Beautiful", "Riot on an Empty Street - Kings of Convenience", 
+						"In the Aeroplane Over the Sea - Neutral Milk Hotel", "Antidote - Foals", "Belle and Sebastian", "Helplessness Blues - Fleet Foxes"
+						};
 				displayAlbum(indies);
 			}
 			
@@ -181,40 +183,52 @@ public class Main {
 			// all albums
 			if (genre == 0){
 				String[] albums = {"Fleet Foxes", "You Want It Darker", "midnight", "Melodrama", "Pure Heroine", "Our Own House", 
-						"Midnight Memories", "Currents", "La La Land", "Like Crazy", "Pulp Fiction", "Starboy"
+						"Midnight Memories", "Currents", "La La Land", "Like Crazy", "Pulp Fiction", "Starboy", "Built on Glass", "Continuum", "Days Are Gone",
+						"Down the Way - Angus & Julia Stone", "En Vogue - Jacques Dutronc", "Holocene", "I Forget Where We Were", 
+						"The Money Store"
 				};
 				displayAlbum(albums);
 			}
 			// alt
 			else if (genre == 1){
-				String[] alts = {"Fleet Foxes", "You Want It Darker", "Melodrama", "Pure Heroine", "Our Own House", "Currents"};
+				String[] alts = {"Fleet Foxes", "You Want It Darker", "Melodrama", "Pure Heroine", "Our Own House", "Currents", "Built on Glass", "Days Are Gone",
+						"Down the Way - Angus & Julia Stone", "Holocene"
+				};
 				displayAlbum(alts);
 			}
 			
 			// folk
 			else if (genre == 2){
-				String[] folks = {"Fleet Foxes", "You Want It Darker"};
+				String[] folks = {"Fleet Foxes", "You Want It Darker", "I Forget Where We Were"};
 				displayAlbum(folks);
 			}
 			
 			// french
-			else if (genre == 3 || genre == 7){
-				System.out.println("No such album");
+			else if (genre == 3){
+				System.out.println("En Vogue - Jacques Dutronc");
 			}
 			
 			// hip hop
-			else if (genre == 4)
-				System.out.println("Starboy");
+			else if (genre == 4){
+				String[] hiphops = {"Starboy", "The Money Store"};
+				displayAlbum(hiphops);
+			}
 			
 			// indie
-			else if (genre == 5)
-				System.out.println("Fleet Foxes");
+			else if (genre == 5){
+				String[] indies = {"Fleet Foxes", "Down the Way - Angus & Julia Stone", "Holocene"};
+				displayAlbum(indies);
+			}
 			
 			// pop
 			else if (genre == 6){
 				String[] pops = {"Melodrama", "Pure Heroine", "Our Own House", "Midnight Memories", "midnight"};
 				displayAlbum(pops);
 			}
+			
+			// rock
+			else if (genre == 7)
+				System.out.println("Continuum");
 			
 			else {
 				String[] soundtracks = {"La La Land", "Pulp Fiction", "Like Crazy"};
