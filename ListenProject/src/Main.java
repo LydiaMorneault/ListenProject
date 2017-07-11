@@ -1,4 +1,3 @@
-import java.io.*;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -52,7 +51,6 @@ public class Main {
 	 * @param genre 
 	 */
 	public static void getAlbum(int type, int genre){
-		int album;
 		// sing alongs
 		if (type == 0){
 			// any genre
@@ -122,7 +120,11 @@ public class Main {
 						"In the Aeroplane Over the Sea - Neutral Milk Hotel", "The Dark Side of the Moon - Pink Floyd", "The Best of Simon & Garfunkel", 
 						"The Graduate - Simon & Garfunkel", "Sleep in the Water - Snakadaktal", "Apocalypse - Thundercat", "Fifty Shades Darker", 
 						"Paper Towns", "An Awesome Wave - alt-J", "Antidote - Foals", "Beauty Behind the Madness", "Gorilla Manor - Local Natives", 
-						"Belle and Sebastian", "Helplessness Blues - Fleet Foxes", "Ma Fleur - The Cinematic Orchestra"
+						"Tigermilk - Belle and Sebastian", "Helplessness Blues - Fleet Foxes", "Ma Fleur - The Cinematic Orchestra", "My Beautiful Dark Twisted Fantasy",
+						"Only Run - Clap Your Hands Say Yeah", "Otis Blue - Otis Redding", "Overgrown - James Blake", "Power, Corruption, and Lies - New Order",
+						"Random Access Memories", "Sun Giant - Fleet Foxes", "This Is All Yours - alt-J", "Best of Francoise Hardy", "Trilogy - The Weeknd",
+						"V for Vendetta - Stan Getz", "Wonder Where We Land - SBTRKT", "Yeezus", "My Maudlin Career - Camera Obscura", "Franz Ferdinand",
+						"Psychocandy - The Jesus and Mary Chain", "Rave Tapes - Mogwai", "Screamadelica - Primal Scream", "Only Revolutions - Biffy Clyro"
 				};
 				displayAlbum(news);
 			}
@@ -132,46 +134,60 @@ public class Main {
 				String[] alts = {"The Names - Baio", "How Big, How Blue, How Beautiful", "Direct Hits - The Killers", "Riot on an Empty Street - Kings of Convenience", 
 						"Wounded Rhymes - Lykke Li", "Era Extrana - Neon Indian", "Vega Intl. Night School - Neon Indian",
 						"In the Aeroplane Over the Sea - Neutral Milk Hotel", "Sleep in the Water - Snakadaktal", "Apocalypse - Thundercat",
-						"An Awesome Wave - alt-J", "Antidote - Foals", "Gorilla Manor - Local Natives", "Belle and Sebastian", "Ma Fleur - The Cinematic Orchestra"
+						"An Awesome Wave - alt-J", "Antidote - Foals", "Gorilla Manor - Local Natives", "Tigermilk - Belle and Sebastian", "Ma Fleur - The Cinematic Orchestra",
+						"Only Run - Clap Your Hands Say Yeah", "Overgrown - James Blake", "Random Access Memories", "Sun Giant - Fleet Foxes",
+						"This Is All Yours - alt-J", "Wonder Where We Land - SBTRKT", "My Maudlin Career - Camera Obscura", "Franz Ferdinand", 
+						"Psychocandy - The Jesus and Mary Chain", "Screamadelica - Primal Scream", "Only Revolutions - Biffy Clyro"
 				};
 				displayAlbum(alts);
 			}
 			
 			// folk
 			else if (genre == 2){
-				String[] folks = {"Jackson C. Frank", "The Best of Leonard Cohen", "The Best of Simon & Garfunkel", "The Graduate - Simon & Garfunkel"};
+				String[] folks = {"Jackson C. Frank", "The Best of Leonard Cohen", "The Best of Simon & Garfunkel", "The Graduate - Simon & Garfunkel", 
+						"Otis Blue - Otis Redding"};
 				displayAlbum(folks);
 			}
 			
 			// french
-			else if (genre == 3)
-				System.out.println("The Best of Bardot");
-			
+			else if (genre == 3){
+				String[] frenchies = {"The Best of Bardot", "Best of Francoise Hardy", "V for Vendetta - Stan Getz"};
+				displayAlbum(frenchies);
+			}
+
+				
 			// hip hop
 			else if (genre == 4){
-				String[] hiphops = {"Because the Internet - Childish Gambino", "If You're Reading This It's Too Late", "Beauty Behind the Madness"};
+				String[] hiphops = {"Because the Internet - Childish Gambino", "If You're Reading This It's Too Late", "Beauty Behind the Madness",
+						"My Beautiful Dark Twisted Fantasy", "Trilogy - The Weeknd", "Yeezus"};
 				displayAlbum(hiphops);
 			}
 			
 			// indie
 			else if (genre == 5){
 				String[] indies = {"How Big, How Blue, How Beautiful", "Riot on an Empty Street - Kings of Convenience", 
-						"In the Aeroplane Over the Sea - Neutral Milk Hotel", "Antidote - Foals", "Belle and Sebastian", "Helplessness Blues - Fleet Foxes"
+						"In the Aeroplane Over the Sea - Neutral Milk Hotel", "Antidote - Foals", "Tigermilk  - Belle and Sebastian", "Helplessness Blues - Fleet Foxes",
+						"Only Run - Clap Your Hands Say Yeah", "Sun Giant - Fleet Foxes", "This Is All Yours - alt-J", "My Maudlin Career - Camera Obscura"
 						};
 				displayAlbum(indies);
 			}
 			
 			// pop
 			else if (genre == 6){
-				String[] pops = {"Room for Squares", "The Search for Everything - John Mayer", "Era Extrana - Neon Indian", "Vega Intl. Night School - Neon Indian"};
+				String[] pops = {"Room for Squares", "The Search for Everything - John Mayer", "Era Extrana - Neon Indian", "Vega Intl. Night School - Neon Indian",
+						"Power, Corruption, and Lies - New Order"};
 				displayAlbum(pops);
 			}
 			
+			// rock
 			else if (genre == 7){
-				String[] rocks = {"Janis Joplin's Greatest Hits",  "Direct Hits - The Killers",  "The Dark Side of the Moon - Pink Floyd"};
+				String[] rocks = {"Janis Joplin's Greatest Hits",  "Direct Hits - The Killers",  "The Dark Side of the Moon - Pink Floyd",
+						"Franz Ferdinand", "Psychocandy - The Jesus and Mary Chain", "Rave Tapes - Mogwai", "Screamadelica - Primal Scream",
+						"Only Revolutions - Biffy Clyro"};
 				displayAlbum(rocks);
 			}
 			
+			// soundtrack
 			else{
 				String[] soundtracks = {"Fifty Shades Darker", "Paper Towns"};
 				displayAlbum(soundtracks);
@@ -185,21 +201,21 @@ public class Main {
 				String[] albums = {"Fleet Foxes", "You Want It Darker", "midnight", "Melodrama", "Pure Heroine", "Our Own House", 
 						"Midnight Memories", "Currents", "La La Land", "Like Crazy", "Pulp Fiction", "Starboy", "Built on Glass", "Continuum", "Days Are Gone",
 						"Down the Way - Angus & Julia Stone", "En Vogue - Jacques Dutronc", "Holocene", "I Forget Where We Were", 
-						"The Money Store"
+						"The Money Store", "SBTRKT", "Take Me Home", "Traveller - Chris Stapleton", "Up All Night"
 				};
 				displayAlbum(albums);
 			}
 			// alt
 			else if (genre == 1){
 				String[] alts = {"Fleet Foxes", "You Want It Darker", "Melodrama", "Pure Heroine", "Our Own House", "Currents", "Built on Glass", "Days Are Gone",
-						"Down the Way - Angus & Julia Stone", "Holocene"
+						"Down the Way - Angus & Julia Stone", "Holocene", "SBTRKT"
 				};
 				displayAlbum(alts);
 			}
 			
 			// folk
 			else if (genre == 2){
-				String[] folks = {"Fleet Foxes", "You Want It Darker", "I Forget Where We Were"};
+				String[] folks = {"Fleet Foxes", "You Want It Darker", "I Forget Where We Were", "Traveller - Chris Stapleton"};
 				displayAlbum(folks);
 			}
 			
@@ -222,7 +238,7 @@ public class Main {
 			
 			// pop
 			else if (genre == 6){
-				String[] pops = {"Melodrama", "Pure Heroine", "Our Own House", "Midnight Memories", "midnight"};
+				String[] pops = {"Melodrama", "Pure Heroine", "Our Own House", "Midnight Memories", "midnight", "Take Me Home", "Up All Night"};
 				displayAlbum(pops);
 			}
 			
