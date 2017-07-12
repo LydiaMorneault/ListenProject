@@ -2,6 +2,9 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Main {
+	
+	//TODO Make Album class to help streamline album sorting process
+	
 	static Scanner scanner = new Scanner(System.in);
 
 	/**
@@ -124,7 +127,8 @@ public class Main {
 						"Only Run - Clap Your Hands Say Yeah", "Otis Blue - Otis Redding", "Overgrown - James Blake", "Power, Corruption, and Lies - New Order",
 						"Random Access Memories", "Sun Giant - Fleet Foxes", "This Is All Yours - alt-J", "Best of Francoise Hardy", "Trilogy - The Weeknd",
 						"V for Vendetta - Stan Getz", "Wonder Where We Land - SBTRKT", "Yeezus", "My Maudlin Career - Camera Obscura", "Franz Ferdinand",
-						"Psychocandy - The Jesus and Mary Chain", "Rave Tapes - Mogwai", "Screamadelica - Primal Scream", "Only Revolutions - Biffy Clyro"
+						"Psychocandy - The Jesus and Mary Chain", "Rave Tapes - Mogwai", "Screamadelica - Primal Scream", "Only Revolutions - Biffy Clyro",
+						"Oracular Spectacular - MGMT"
 				};
 				displayAlbum(news);
 			}
@@ -137,7 +141,7 @@ public class Main {
 						"An Awesome Wave - alt-J", "Antidote - Foals", "Gorilla Manor - Local Natives", "Tigermilk - Belle and Sebastian", "Ma Fleur - The Cinematic Orchestra",
 						"Only Run - Clap Your Hands Say Yeah", "Overgrown - James Blake", "Random Access Memories", "Sun Giant - Fleet Foxes",
 						"This Is All Yours - alt-J", "Wonder Where We Land - SBTRKT", "My Maudlin Career - Camera Obscura", "Franz Ferdinand", 
-						"Psychocandy - The Jesus and Mary Chain", "Screamadelica - Primal Scream", "Only Revolutions - Biffy Clyro"
+						"Psychocandy - The Jesus and Mary Chain", "Screamadelica - Primal Scream", "Only Revolutions - Biffy Clyro", "Oracular Spectacular - MGMT"
 				};
 				displayAlbum(alts);
 			}
