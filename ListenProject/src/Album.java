@@ -22,11 +22,15 @@ public class Album {
 	 * @return	-- returns boolean true if the album is that genre
 	 */
 	public static boolean isIn(int genre){
+		System.out.println("Length of genres: " + genres.length);
 		for (int i = 0; i < genres.length; i++){
 			if (genre == genres[i]){
-				//System.out.println(title + ":" + genre + genres[i]);
+				System.out.println(genre + " vs. " + genres[i]);
+				System.out.println(true);
 				return true;
 			}
+			System.out.println(genre + " vs. " + genres[i]);
+			System.out.println(false);
 		}
 		return false;
 	}
@@ -34,6 +38,6 @@ public class Album {
 	public static void main(String[] args){
 		int[] genres1 = {1, 6, 7};
 		Album the1975 = new Album("The 1975", "The 1975", genres1, 0);
-		System.out.println(Album.isIn(5));
+		System.out.println(Album.isIn(6));
 	}
 }
