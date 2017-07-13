@@ -3,7 +3,8 @@ import java.util.Random;
 
 public class Main {
 	
-	//TODO Make Album class to help streamline album sorting process
+	static Album[] albums;
+	static Album chosen;
 	
 	static Scanner scanner = new Scanner(System.in);
 
@@ -29,232 +30,73 @@ public class Main {
 		// new playlist
 		if (choice == 0){
 			String[] news = {"Discover Weekly", "Indie Acoustic", "Stomp & Holler", "Totally 80s", "Woodstock"};
-			displayAlbum(news);
+			displayPlaylist(news);
 		}
 		// sing along
 		else {
 			String[] faves = {"Starred", "Random", "I Know Places", "midnight city", "summer", "rain"};
-			displayAlbum(faves);
+			displayPlaylist(faves);
 		}
 	}
 	
 	/**
-	 * displayAlbum shows the user which album has been selected for them
-	 * @param array -- the String array of albums that will be chosen from randomly
+	 * displayPlaylist shows the user which playlist has been selected for them
+	 * @param pl -- the String array of playlists that will be chosen from randomly
 	 */
-	public static void displayAlbum(String[] array){
-		int album = getRandom(array.length);
-		System.out.println("You should listen to: " + array[album]);
+	public static void displayPlaylist(String[] pl){
+		int playlist = getRandom(pl.length);
+		System.out.println("You should listen to: " + pl[playlist]);
+	}
+	
+	/**
+	 * displayAlbum shows the user which album has been selected for them
+	 * @param array -- the Album array of albums that will be chosen from randomly
+	 */
+	@SuppressWarnings("static-access")
+	public static Album displayAlbum(Album[] array, int cat, int genre){
+		int album;
+		Album thisOne;
+		boolean keepGoing = true;
+		
+		// genre doesn't matter, goes through all 
+		if (genre == 0){
+			do {
+				album = getRandom(albums.length);
+				System.out.println(album);
+				thisOne = albums[album];
+			} while (cat != thisOne.cat);
+			return thisOne;
+		}
+		
+		do {
+			System.out.println("In the right loop");
+			album = getRandom(albums.length+1);
+			System.out.println(album);
+			thisOne = albums[album];
+			System.out.println(thisOne.isIn(genre) + " " + thisOne.title + "   Preconditional!");
+			if (Album.isIn(genre)){
+				System.out.println(thisOne.isIn(genre) + " " + thisOne.title + " It is in!");
+				keepGoing = false;
+				
+			}
+		} while ((cat != thisOne.cat) && keepGoing);
+
+		return thisOne;
+
 	}
 	
 	/**
 	 * getAlbum selects an album from repository
 	 * @param type is an integer that determines which to do 
 	 * 		0 = sing along album
+	 * 		1 = new music
+	 * 		2 = to listen
 	 * @param genre 
 	 */
 	public static void getAlbum(int type, int genre){
 		// sing alongs
-		if (type == 0){
-			// any genre
-			if (genre == 0){
-				String[] singalongs = {"All This Bad Blood", "Babel", "Badlands", "Barton Hollow", "Carousel", "Ceremonials", "Contra", "Electra Heart",
-						"Every Kingdom", "The Fame", "The Fault in Our Stars", "Four", "Graceland", "Happy Feet", "Hozier", "The Hunger Games",
-						"I like it when you sleep for you are so beautiful yet so unaware of it", "Lines, Vines, and Trying Times", "A Little Bit Longer",
-						"Made in the A.M.", "Modern Vampires of the City", "The Morning", "Night Visions", "Racine Carree", "Vampire Weekend",
-						"x", "The 1975", "1989", "+"};
-
-				displayAlbum(singalongs);
-			}
-			// alternative
-			else if (genre == 1){
-				String[] alts = {"All This Bad Blood", "Badlands", "Ceremonials", "Contra", "Electra Heart", 
-						"I like it when you sleep for you are so beautiful yet so unaware of it", "Modern Vampires of the City", "Vampire Weekend",
-						"The 1975", "Night Visions"};
-				displayAlbum(alts);
-			}
-			// folk
-			else if (genre == 2){
-				String[] folks = {"Babel", "Barton Hollow", "Every Kingdom", "The Hunger Games"};
-				displayAlbum(folks);
-			}
-			// french
-			else if (genre == 3)
-				System.out.println("Racine Caree");
-			
-			// hip hop
-			else if (genre == 4)
-				System.out.println("No such album");
-			
-			// indie
-			else if (genre == 5){
-				String[] indies = {"The Fault in Our Stars", "Contra", "Modern Vampires of the City", "Vampire Weekend"};
-				displayAlbum(indies);
-			}
-			
-			// pop
-			else if (genre == 6){
-				String[] pops = {"The Fame", "Four", "Happy Feet", "Lines, Vines, and Trying Times", "A Little Bit Longer",
-						"Made in the A.M.", "The Morning","Racine Carree", "x", "1989", "+", "I like it when you sleep", "Electra Heart"};
-				displayAlbum(pops);
-			}
-			
-			// rock
-			else if (genre == 7){
-				String[] rocks = {"Graceland", "Hozier"};
-				displayAlbum(rocks);
-			}
-			// soundtrack
-			else{
-				String[] soundtracks = {"Carousel", "The Fault in Our Stars", "Happy Feet", "The Hunger Games"};
-				displayAlbum(soundtracks);
-			}
-			
-		} 
-		
-		// new albums
-		else if (type == 1){
-			// all albums
-			if (genre == 0){
-				String[] news = {"The Names - Baio", "The Best of Bardot", "Because the Internet - Childish Gambino", "If You're Reading This It's Too Late",
-						"How Big, How Blue, How Beautiful", "Jackson C. Frank", "Janis Joplin's Greatest Hits", "Room for Squares", 
-						"The Search for Everything - John Mayer", "Direct Hits - The Killers", "Riot on an Empty Street - Kings of Convenience", 
-						"The Best of Leonard Cohen", "Wounded Rhymes - Lykke Li", "Era Extrana - Neon Indian", "Vega Intl. Night School - Neon Indian",
-						"In the Aeroplane Over the Sea - Neutral Milk Hotel", "The Dark Side of the Moon - Pink Floyd", "The Best of Simon & Garfunkel", 
-						"The Graduate - Simon & Garfunkel", "Sleep in the Water - Snakadaktal", "Apocalypse - Thundercat", "Fifty Shades Darker", 
-						"Paper Towns", "An Awesome Wave - alt-J", "Antidote - Foals", "Beauty Behind the Madness", "Gorilla Manor - Local Natives", 
-						"Tigermilk - Belle and Sebastian", "Helplessness Blues - Fleet Foxes", "Ma Fleur - The Cinematic Orchestra", "My Beautiful Dark Twisted Fantasy",
-						"Only Run - Clap Your Hands Say Yeah", "Otis Blue - Otis Redding", "Overgrown - James Blake", "Power, Corruption, and Lies - New Order",
-						"Random Access Memories", "Sun Giant - Fleet Foxes", "This Is All Yours - alt-J", "Best of Francoise Hardy", "Trilogy - The Weeknd",
-						"V for Vendetta - Stan Getz", "Wonder Where We Land - SBTRKT", "Yeezus", "My Maudlin Career - Camera Obscura", "Franz Ferdinand",
-						"Psychocandy - The Jesus and Mary Chain", "Rave Tapes - Mogwai", "Screamadelica - Primal Scream", "Only Revolutions - Biffy Clyro",
-						"Oracular Spectacular - MGMT"
-				};
-				displayAlbum(news);
-			}
-			
-			// alt
-			else if (genre == 1){
-				String[] alts = {"The Names - Baio", "How Big, How Blue, How Beautiful", "Direct Hits - The Killers", "Riot on an Empty Street - Kings of Convenience", 
-						"Wounded Rhymes - Lykke Li", "Era Extrana - Neon Indian", "Vega Intl. Night School - Neon Indian",
-						"In the Aeroplane Over the Sea - Neutral Milk Hotel", "Sleep in the Water - Snakadaktal", "Apocalypse - Thundercat",
-						"An Awesome Wave - alt-J", "Antidote - Foals", "Gorilla Manor - Local Natives", "Tigermilk - Belle and Sebastian", "Ma Fleur - The Cinematic Orchestra",
-						"Only Run - Clap Your Hands Say Yeah", "Overgrown - James Blake", "Random Access Memories", "Sun Giant - Fleet Foxes",
-						"This Is All Yours - alt-J", "Wonder Where We Land - SBTRKT", "My Maudlin Career - Camera Obscura", "Franz Ferdinand", 
-						"Psychocandy - The Jesus and Mary Chain", "Screamadelica - Primal Scream", "Only Revolutions - Biffy Clyro", "Oracular Spectacular - MGMT"
-				};
-				displayAlbum(alts);
-			}
-			
-			// folk
-			else if (genre == 2){
-				String[] folks = {"Jackson C. Frank", "The Best of Leonard Cohen", "The Best of Simon & Garfunkel", "The Graduate - Simon & Garfunkel", 
-						"Otis Blue - Otis Redding"};
-				displayAlbum(folks);
-			}
-			
-			// french
-			else if (genre == 3){
-				String[] frenchies = {"The Best of Bardot", "Best of Francoise Hardy", "V for Vendetta - Stan Getz"};
-				displayAlbum(frenchies);
-			}
-
-				
-			// hip hop
-			else if (genre == 4){
-				String[] hiphops = {"Because the Internet - Childish Gambino", "If You're Reading This It's Too Late", "Beauty Behind the Madness",
-						"My Beautiful Dark Twisted Fantasy", "Trilogy - The Weeknd", "Yeezus"};
-				displayAlbum(hiphops);
-			}
-			
-			// indie
-			else if (genre == 5){
-				String[] indies = {"How Big, How Blue, How Beautiful", "Riot on an Empty Street - Kings of Convenience", 
-						"In the Aeroplane Over the Sea - Neutral Milk Hotel", "Antidote - Foals", "Tigermilk  - Belle and Sebastian", "Helplessness Blues - Fleet Foxes",
-						"Only Run - Clap Your Hands Say Yeah", "Sun Giant - Fleet Foxes", "This Is All Yours - alt-J", "My Maudlin Career - Camera Obscura"
-						};
-				displayAlbum(indies);
-			}
-			
-			// pop
-			else if (genre == 6){
-				String[] pops = {"Room for Squares", "The Search for Everything - John Mayer", "Era Extrana - Neon Indian", "Vega Intl. Night School - Neon Indian",
-						"Power, Corruption, and Lies - New Order"};
-				displayAlbum(pops);
-			}
-			
-			// rock
-			else if (genre == 7){
-				String[] rocks = {"Janis Joplin's Greatest Hits",  "Direct Hits - The Killers",  "The Dark Side of the Moon - Pink Floyd",
-						"Franz Ferdinand", "Psychocandy - The Jesus and Mary Chain", "Rave Tapes - Mogwai", "Screamadelica - Primal Scream",
-						"Only Revolutions - Biffy Clyro"};
-				displayAlbum(rocks);
-			}
-			
-			// soundtrack
-			else{
-				String[] soundtracks = {"Fifty Shades Darker", "Paper Towns"};
-				displayAlbum(soundtracks);
-			}
-		}
-		
-		// to listen to albums
-		else {
-			// all albums
-			if (genre == 0){
-				String[] albums = {"Fleet Foxes", "You Want It Darker", "midnight", "Melodrama", "Pure Heroine", "Our Own House", 
-						"Midnight Memories", "Currents", "La La Land", "Like Crazy", "Pulp Fiction", "Starboy", "Built on Glass", "Continuum", "Days Are Gone",
-						"Down the Way - Angus & Julia Stone", "En Vogue - Jacques Dutronc", "Holocene", "I Forget Where We Were", 
-						"The Money Store", "SBTRKT", "Take Me Home", "Traveller - Chris Stapleton", "Up All Night"
-				};
-				displayAlbum(albums);
-			}
-			// alt
-			else if (genre == 1){
-				String[] alts = {"Fleet Foxes", "You Want It Darker", "Melodrama", "Pure Heroine", "Our Own House", "Currents", "Built on Glass", "Days Are Gone",
-						"Down the Way - Angus & Julia Stone", "Holocene", "SBTRKT"
-				};
-				displayAlbum(alts);
-			}
-			
-			// folk
-			else if (genre == 2){
-				String[] folks = {"Fleet Foxes", "You Want It Darker", "I Forget Where We Were", "Traveller - Chris Stapleton"};
-				displayAlbum(folks);
-			}
-			
-			// french
-			else if (genre == 3){
-				System.out.println("En Vogue - Jacques Dutronc");
-			}
-			
-			// hip hop
-			else if (genre == 4){
-				String[] hiphops = {"Starboy", "The Money Store"};
-				displayAlbum(hiphops);
-			}
-			
-			// indie
-			else if (genre == 5){
-				String[] indies = {"Fleet Foxes", "Down the Way - Angus & Julia Stone", "Holocene"};
-				displayAlbum(indies);
-			}
-			
-			// pop
-			else if (genre == 6){
-				String[] pops = {"Melodrama", "Pure Heroine", "Our Own House", "Midnight Memories", "midnight", "Take Me Home", "Up All Night"};
-				displayAlbum(pops);
-			}
-			
-			// rock
-			else if (genre == 7)
-				System.out.println("Continuum");
-			
-			else {
-				String[] soundtracks = {"La La Land", "Pulp Fiction", "Like Crazy"};
-				displayAlbum(soundtracks);
-			}
-		}
+		chosen = displayAlbum(albums, type, genre);
+		System.out.println("You should listen to: " + chosen.title + " by " + chosen.artist);
 	}
 	
 	public static int getGenre(){
@@ -373,8 +215,8 @@ public class Main {
 	
 
 	public static void main(String[] args) {
-
-		
+		Populate populater = new Populate();
+		albums = populater.go();
 		System.out.println("Welcome to the Listen Project.\n     1. Choose your listening experience\n     2. Random");
 		int input = scanner.nextInt();
 		
